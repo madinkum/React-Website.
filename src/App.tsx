@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import useLocation from "react-router-dom"
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Skills from "./Components/Skills";
