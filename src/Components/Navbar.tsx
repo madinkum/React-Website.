@@ -1,37 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import {GiHamburgerMenu} from "react-icons/gi"
+import {LuDelete} from "react-icons/lu"
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
   };
 
-  useEffect(() => {
 
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', changeWidth)
-
-    return () => {
-        window.removeEventListener('resize', changeWidth)
-    }
-
-  }, [])
 
   return (
     
-    <nav >
-      {(toggleMenu || screenWidth > 500)&& (
-        <ul className="nav-menu">
-        <li className="nav-item">
-          <NavLink to="/" className="nav-link">
-            <img className="logo" src="./Images/logo.png" alt="logo" />
-          </NavLink>
-        </li>
+
+    <nav className="navbar">
+      <div className="nav-container">
+      <Link to="/">
+       <img className="logo" src="./Images/logo.png" alt="logo" /> 
+      </Link>
+    
+      <ul className={toggleMenu? "nav-menu active": "nav-menu"}>
+      
         <li className="nav-item">
           <NavLink to="/" className="nav-link">
             Home
@@ -42,23 +36,38 @@ const Navbar = () => {
             Skills
           </NavLink>
         </li>
-        <li className="nav-item" >
+        <li className="nav-item">
           <NavLink to="/about" className="nav-link">
             About
           </NavLink>
         </li>
 
         <li className="nav-item">
-        <NavLink to="/contacts" className="nav-link">
-          Contacts
-        </NavLink>
+          <NavLink to="/contacts" className="nav-link">
+            Contacts
+          </NavLink>
         </li>
       </ul>
+     <div className="nav-icon" onClick={toggleNav}>
+       {/* {<i className={toggleMenu ? "fas fa-times" : "fas fa-bars"}></i> } */}
+      {toggleMenu?(
+        <span className="icon">
+          <LuDelete/>
+          
+        </span>
+      ):(
+        <span className="icon">
+          <GiHamburgerMenu/>
+        </span>
       )}
-      <button onClick={toggleNav} className="btn">
-        MENU
-      </button>
+     
+     </div>
+
+    </div>
     </nav>
+   
+    
+    
   );
 };
 
