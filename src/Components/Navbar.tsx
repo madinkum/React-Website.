@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState} from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import {GiHamburgerMenu} from "react-icons/gi"
 import {LuDelete} from "react-icons/lu"
 
